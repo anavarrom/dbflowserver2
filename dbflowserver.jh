@@ -1,0 +1,68 @@
+enum NotificationStatus {
+    EMITTED, RECEIVED, READ
+}
+
+entity SafeKeepingProject {
+	name String,
+    description String,
+    parent1 String,
+	parent2 String,
+	mediator String,
+	start LocalDate
+}
+
+entity SafeKeepingPeriod {
+	year String,
+    owner String,
+	text String,
+	description String,
+	startDate LocalDate,
+	endDate LocalDate,
+	backgroundColor String,
+	textColor String
+}
+
+entity Notification {
+    subject String,
+    body String,
+    from String,
+    to String,
+    emittedDate LocalDate,
+    readDate LocalDate,
+    dueDate LocalDate,
+    status NotificationStatus,
+	fromId Long,
+    toId Long,
+	chatId Long
+}
+
+entity Appointment {
+	title String,
+	description String,
+	emittedDate LocalDate,
+	start LocalDate,
+	end LocalDate,
+	allDay Boolean,
+	editable Boolean,
+	backgroundColor String,
+	textColor String,
+}
+
+relationship OneToOne {
+	Notification to Appointment
+}
+relationship OneToMany {
+	SafeKeepingProject to SafeKeepingPeriod
+}
+
+// Set pagination options
+paginate SafeKeepingPeriod, SafeKeepingProject, Appointment, Notification  with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl //except Employee, Job
+//paginate Job with pagination
+
