@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "dbflow.server",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.3",
+    "applicationType": "microservice",
+    "baseName": "",
+    "packageName": "dbflow.server",
+    "packageFolder": "dbflow/server",
+    "serverPort": "8081",
+    "authenticationType": "oauth2",
+    "cacheProvider": "redis",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "NmFjYTgzOGYwYjA2NTU3MjM3MjU2ZjNlYjQ2MWIxYmI1M2MyOGNlOTU5ZDY3MGU0ODljZDJjY2FhYmM1MTFiNjg0ZTE2YWNkOWFkNmQ4MzE1NjhlZjAzOTk0NmIyZGE1Y2ZlYTQ1ODlkMjU5NGRmOTNiZDY1M2JiMzEwOTRkY2E=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1601887365667,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": ["en", "es"],
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
