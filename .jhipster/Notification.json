@@ -1,0 +1,72 @@
+{
+  "name": "Notification",
+  "fields": [
+    {
+      "fieldName": "subject",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "body",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "from",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "to",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emittedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "readDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "NotificationStatus",
+      "fieldValues": "EMITTED,RECEIVED,READ"
+    },
+    {
+      "fieldName": "fromId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "toId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "chatId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "appointment",
+      "otherEntityRelationshipName": "notification",
+      "relationshipName": "appointment",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201006102333",
+  "entityTableName": "notification",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dbflowserver2",
+  "applications": "*",
+  "microserviceName": "dbflowserver2"
+}

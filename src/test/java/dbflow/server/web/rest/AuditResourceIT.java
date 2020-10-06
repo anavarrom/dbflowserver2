@@ -1,7 +1,6 @@
 package dbflow.server.web.rest;
 
 import dbflow.server.Dbflowserver2App;
-import dbflow.server.RedisTestContainerExtension;
 import dbflow.server.config.TestSecurityConfiguration;
 import dbflow.server.domain.PersistentAuditEvent;
 import dbflow.server.repository.PersistenceAuditEventRepository;
@@ -9,7 +8,6 @@ import dbflow.server.security.AuthoritiesConstants;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +32,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser(authorities = AuthoritiesConstants.ADMIN)
 @SpringBootTest(classes = {Dbflowserver2App.class, TestSecurityConfiguration.class})
-@ExtendWith(RedisTestContainerExtension.class)
 @Transactional
 public class AuditResourceIT {
 

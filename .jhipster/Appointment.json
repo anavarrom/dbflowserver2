@@ -1,0 +1,62 @@
+{
+  "name": "Appointment",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emittedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "start",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "end",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "allDay",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "editable",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "backgroundColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "textColor",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "notification",
+      "otherEntityRelationshipName": "appointment",
+      "relationshipName": "notification",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201006102433",
+  "entityTableName": "appointment",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dbflowserver2",
+  "applications": "*",
+  "microserviceName": "dbflowserver2"
+}

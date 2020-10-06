@@ -1,10 +1,8 @@
 package dbflow.server.web.rest.errors;
 
-import dbflow.server.RedisTestContainerExtension;
 import dbflow.server.Dbflowserver2App;
 import dbflow.server.config.TestSecurityConfiguration;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -25,7 +23,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 @AutoConfigureMockMvc
 @SpringBootTest(classes = {Dbflowserver2App.class, TestSecurityConfiguration.class})
-@ExtendWith(RedisTestContainerExtension.class)
 public class ExceptionTranslatorIT {
 
     @Autowired

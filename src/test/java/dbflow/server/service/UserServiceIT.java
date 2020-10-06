@@ -1,6 +1,5 @@
 package dbflow.server.service;
 
-import dbflow.server.RedisTestContainerExtension;
 import dbflow.server.Dbflowserver2App;
 import dbflow.server.config.Constants;
 import dbflow.server.config.TestSecurityConfiguration;
@@ -11,7 +10,6 @@ import dbflow.server.service.dto.UserDTO;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -35,7 +33,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Integration tests for {@link UserService}.
  */
 @SpringBootTest(classes = {Dbflowserver2App.class, TestSecurityConfiguration.class})
-@ExtendWith(RedisTestContainerExtension.class)
 @Transactional
 public class UserServiceIT {
 

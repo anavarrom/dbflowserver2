@@ -1,0 +1,58 @@
+{
+  "name": "SafeKeepingPeriod",
+  "fields": [
+    {
+      "fieldName": "year",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "owner",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "backgroundColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "textColor",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "safeKeepingProject",
+      "otherEntityRelationshipName": "safeKeepingPeriod",
+      "relationshipName": "safeKeepingProject",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201006102233",
+  "entityTableName": "safe_keeping_period",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dbflowserver2",
+  "applications": "*",
+  "microserviceName": "dbflowserver2"
+}

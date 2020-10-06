@@ -1,0 +1,49 @@
+{
+  "name": "SafeKeepingProject",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "parent1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "parent2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mediator",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "start",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "safeKeepingPeriod",
+      "otherEntityRelationshipName": "safeKeepingProject",
+      "relationshipName": "safeKeepingPeriod"
+    }
+  ],
+  "changelogDate": "20201006101601",
+  "entityTableName": "safe_keeping_project",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dbflowserver2",
+  "applications": "*",
+  "microserviceName": "dbflowserver2"
+}

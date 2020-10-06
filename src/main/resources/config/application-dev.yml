@@ -43,9 +43,10 @@ spring:
       port: 8500
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/dbflowserver2
-    username: dbflowserver2
-    password:
+    # url: jdbc:postgresql://dbflowserver-postgresql:5432/dbFlowServer
+    url: jdbc:postgresql://localhost:5442/dbFlowServer
+    username: dbFlowServer
+    password: dbFlowServer
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -73,6 +74,18 @@ spring:
     locator:
       discovery:
         enabled: true
+  security:
+    oauth2:
+      client:
+        provider:
+          oidc:
+            # issuer-uri: http://localhost:9080/auth/realms/jhipster
+            issuer-uri: https://dev-811107.okta.com/oauth2/default
+        registration:
+          oidc:
+            client-id: 0oarajpz7qbHQfAdO4x6
+            # client-id: web_app
+            # client-secret: web_app
 
 server:
   port: 8081
@@ -84,13 +97,6 @@ server:
 # ===================================================================
 
 jhipster:
-  cache: # Cache configuration
-    redis: # Redis configuration
-      expiration: 3600 # By default objects stay 1 hour (in seconds) in the cache
-      server: redis://localhost:6379
-      cluster: false
-      # server: redis://localhost:6379,redis://localhost:16379,redis://localhost:26379
-      # cluster: true
   # CORS is disabled by default on microservices, as you should access them through a gateway.
   # If you want to enable it, please uncomment the configuration below.
   # cors:

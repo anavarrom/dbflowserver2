@@ -2,14 +2,12 @@ package dbflow.server.repository;
 
 import dbflow.server.Dbflowserver2App;
 
-import dbflow.server.RedisTestContainerExtension;
 import dbflow.server.config.Constants;
 import dbflow.server.config.TestSecurityConfiguration;
 import dbflow.server.config.audit.AuditEventConverter;
 import dbflow.server.domain.PersistentAuditEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,7 +30,6 @@ import static dbflow.server.repository.CustomAuditEventRepository.EVENT_DATA_COL
  * Integration tests for {@link CustomAuditEventRepository}.
  */
 @SpringBootTest(classes = {Dbflowserver2App.class, TestSecurityConfiguration.class})
-@ExtendWith(RedisTestContainerExtension.class)
 @Transactional
 public class CustomAuditEventRepositoryIT {
 

@@ -1,13 +1,11 @@
 package dbflow.server.config.timezone;
 
 import dbflow.server.Dbflowserver2App;
-import dbflow.server.RedisTestContainerExtension;
 import dbflow.server.config.TestSecurityConfiguration;
 import dbflow.server.repository.timezone.DateTimeWrapper;
 import dbflow.server.repository.timezone.DateTimeWrapperRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +23,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Integration tests for the ZoneId Hibernate configuration.
  */
 @SpringBootTest(classes = {Dbflowserver2App.class, TestSecurityConfiguration.class})
-@ExtendWith(RedisTestContainerExtension.class)
 public class HibernateTimeZoneIT {
 
     @Autowired

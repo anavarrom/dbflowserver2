@@ -9,10 +9,6 @@ services:
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:postgresql://dbflowserver2-postgresql:5432/dbflowserver2
-      - JHIPSTER_CACHE_REDIS_SERVER=redis://dbflowserver2-redis:6379
-      - JHIPSTER_CACHE_REDIS_CLUSTER=false
-      # - JHIPSTER_CACHE_REDIS_SERVER=redis://dbflowserver2-redis:6379
-      # - JHIPSTER_CACHE_REDIS_CLUSTER=true
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/auth/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
@@ -21,10 +17,6 @@ services:
     extends:
       file: postgresql.yml
       service: dbflowserver2-postgresql
-  dbflowserver2-redis:
-    extends:
-      file: redis.yml
-      service: dbflowserver2-redis
   consul:
     extends:
       file: consul.yml
