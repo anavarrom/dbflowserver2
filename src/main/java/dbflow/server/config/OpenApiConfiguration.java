@@ -9,11 +9,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -24,12 +28,13 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
 @Profile(JHipsterConstants.SPRING_PROFILE_SWAGGER)
+@EnableSwagger2
 public class OpenApiConfiguration {
 
     @Bean
     public SwaggerCustomizer noApiFirstCustomizer() {
         return docket -> docket.select()
-            .apis(Predicates.not(RequestHandlerSelectors.basePackage("dbflow.server.web.api")));
+            .apis(Predicates.not(RequestHandlerSelectors.basePackage("dbflow.server.web.rest")));
     }
 
     @Bean
@@ -63,10 +68,8 @@ public class OpenApiConfiguration {
             .genericModelSubstitutes(ResponseEntity.class)
             .ignoredParameterTypes(Pageable.class)
             .select()
-            .apis(RequestHandlerSelectors.basePackage("dbflow.server.web.api"))
+            .apis(RequestHandlerSelectors.basePackage("dbflow.server.web.rest"))
             .paths(regex(properties.getDefaultIncludePattern()))
             .build();
     }
-
-
 }

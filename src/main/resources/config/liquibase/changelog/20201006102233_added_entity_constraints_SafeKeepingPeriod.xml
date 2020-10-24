@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity SafeKeepingPeriod.
+    -->
+    <changeSet id="20201006102233-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="safe_keeping_project_id"
+                                 baseTableName="safe_keeping_period"
+                                 constraintName="fk_safe_keeping_period_safe_keeping_project_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="safe_keeping_project"/>
+
+    </changeSet>
+</databaseChangeLog>
