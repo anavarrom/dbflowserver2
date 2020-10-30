@@ -1,9 +1,10 @@
 package dbflow.server.web.rest;
 
+import dbflow.server.security.SecurityUtils;
 import dbflow.server.service.SafeKeepingPeriodService;
 import dbflow.server.web.rest.errors.BadRequestAlertException;
 import dbflow.server.service.dto.SafeKeepingPeriodDTO;
-
+import dbflow.server.service.dto.SafeKeepingProjectDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -50,7 +51,7 @@ public class SafeKeepingPeriodResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new safeKeepingPeriodDTO, or with status {@code 400 (Bad Request)} if the safeKeepingPeriod has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/safe-keeping-periods")
+    @PostMapping("/keepingPeriod")
     public ResponseEntity<SafeKeepingPeriodDTO> createSafeKeepingPeriod(@RequestBody SafeKeepingPeriodDTO safeKeepingPeriodDTO) throws URISyntaxException {
         log.debug("REST request to save SafeKeepingPeriod : {}", safeKeepingPeriodDTO);
         if (safeKeepingPeriodDTO.getId() != null) {
@@ -89,7 +90,7 @@ public class SafeKeepingPeriodResource {
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of safeKeepingPeriods in body.
      */
-    @GetMapping("/safe-keeping-periods")
+    @GetMapping("/keepingPeriod")
     public ResponseEntity<List<SafeKeepingPeriodDTO>> getAllSafeKeepingPeriods(Pageable pageable) {
         log.debug("REST request to get a page of SafeKeepingPeriods");
         Page<SafeKeepingPeriodDTO> page = safeKeepingPeriodService.findAll(pageable);
@@ -103,11 +104,49 @@ public class SafeKeepingPeriodResource {
      * @param id the id of the safeKeepingPeriodDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the safeKeepingPeriodDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/safe-keeping-periods/{id}")
+    @GetMapping("/keepingPeriod/{id}")
     public ResponseEntity<SafeKeepingPeriodDTO> getSafeKeepingPeriod(@PathVariable Long id) {
         log.debug("REST request to get SafeKeepingPeriod : {}", id);
         Optional<SafeKeepingPeriodDTO> safeKeepingPeriodDTO = safeKeepingPeriodService.findOne(id);
         return ResponseUtil.wrapOrNotFound(safeKeepingPeriodDTO);
+    }
+
+    /**
+     * {@code GET  /chats} : get all the user appointments.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of appointments in body.
+     */
+    @GetMapping("/keepingPeriod/findByProject/{id}")
+    public ResponseEntity<List<SafeKeepingPeriodDTO>> getAllByProject(@PathVariable Long id, Pageable pageable) { 
+       boolean isConnected = SecurityUtils.isAuthenticated();
+       if (!isConnected) {
+    	   log.debug("Not Connected ");
+    	   return null;
+       } 
+       
+       Page<SafeKeepingPeriodDTO> page = safeKeepingPeriodService.findAllByProject(id, pageable);
+       HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+       return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /chats} : get all the user appointments.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of appointments in body.
+     */
+    @GetMapping("/keepingPeriod/findByProjectAndYear/{id}/{year}")
+    public ResponseEntity<List<SafeKeepingPeriodDTO>> getAllByProjectAndYear(@PathVariable Long id, @PathVariable String year, Pageable pageable) { 
+       boolean isConnected = SecurityUtils.isAuthenticated();
+       if (!isConnected) {
+    	   log.debug("Not Connected ");
+    	   return null;
+       } 
+       
+       Page<SafeKeepingPeriodDTO> page = safeKeepingPeriodService.findAllByProjectAndYear(id, year, pageable);
+       HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+       return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
@@ -116,7 +155,7 @@ public class SafeKeepingPeriodResource {
      * @param id the id of the safeKeepingPeriodDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/safe-keeping-periods/{id}")
+    @DeleteMapping("/keepingPeriod/{id}")
     public ResponseEntity<Void> deleteSafeKeepingPeriod(@PathVariable Long id) {
         log.debug("REST request to delete SafeKeepingPeriod : {}", id);
         safeKeepingPeriodService.delete(id);

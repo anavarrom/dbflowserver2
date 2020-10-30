@@ -63,4 +63,16 @@ public class SafeKeepingPeriodServiceImpl implements SafeKeepingPeriodService {
         log.debug("Request to delete SafeKeepingPeriod : {}", id);
         safeKeepingPeriodRepository.deleteById(id);
     }
+
+	@Override
+	public Page<SafeKeepingPeriodDTO> findAllByProject(Long projectId, Pageable pageable) {
+		// TODO Auto-generated method stub
+        return safeKeepingPeriodRepository.findAllBySafeKeepingProjectId(projectId, pageable).map(safeKeepingPeriodMapper::toDto);
+	}
+
+	@Override
+	public Page<SafeKeepingPeriodDTO> findAllByProjectAndYear(Long projectId, String year, Pageable pageable) {
+		// TODO Auto-generated method stub
+        return safeKeepingPeriodRepository.findAllBySafeKeepingProjectIdAndYear(projectId, year, pageable).map(safeKeepingPeriodMapper::toDto);
+	}
 }

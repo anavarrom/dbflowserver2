@@ -30,6 +30,22 @@ public interface SafeKeepingPeriodService {
 
 
     /**
+     * Get all the safeKeepingPeriods.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    Page<SafeKeepingPeriodDTO> findAllByProject(Long projectId, Pageable pageable);
+
+    /**
+     * Get all the safeKeepingPeriods.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    Page<SafeKeepingPeriodDTO> findAllByProjectAndYear(Long projectId, String year, Pageable pageable);
+
+    /**
      * Get the "id" safeKeepingPeriod.
      *
      * @param id the id of the entity.
